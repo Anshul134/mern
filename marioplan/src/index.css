@@ -5,9 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #e6e4e4;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+form{
+	margin-top : 80px;
+	padding: 20px;
+}
+
+form h5, form button {
+	margin: 20px 0;
 }
