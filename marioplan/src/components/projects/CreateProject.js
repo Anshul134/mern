@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
+import {addProject} from '../../store/actions';
 
 class SignIn extends Component {
 	constructor(props) {
@@ -10,6 +13,8 @@ class SignIn extends Component {
 
 		this.onChange = this.onChange.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
+
+		console.log("props>>>", this.props)
 	}
 
 	onChange(e) {
@@ -20,6 +25,7 @@ class SignIn extends Component {
 	onSubmit(e) {
 		e.preventDefault();
 		console.log("state : ", this.state);
+		this.props.addProject(this.state)
 	}
 
 	render() {
@@ -47,4 +53,17 @@ class SignIn extends Component {
 	}
 }
 
-export default SignIn;
+const mapStateToProps = (state) => {
+	return {
+		project : state.project,
+		projects : state.projects
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addProject : (project)=> dispatch(addProject(project) )
+	} ;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

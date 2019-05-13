@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => {
 	const id = ownProps.match.params.id;
 	
 	return {
-		project : state.project.projects.filter( (proj) => proj.id.toString(10) === id) 
+		project : state.projects.filter( (proj) => proj.id.toString(10) === id) 
 	}
 }
 

@@ -9,11 +9,13 @@ import CreateProject from './components/projects/CreateProject';
 import SignIn from './components/auth/SignIn';
 import SignOn from './components/auth/SignOn';
 
-import {createStore} from 'redux';
-import rootReducer from './store/reducers/rootReducer'
 import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 
-const store = createStore(rootReducer);
+import rootProvider from './store/providers/rootProvider';
+
+const store = createStore(rootProvider, applyMiddleware(thunk) );
 
 function App() {
   return (
@@ -28,7 +30,7 @@ function App() {
 	        <Route exact path="/signOn" component={SignOn} />
 	      </Switch>
 	    </Router>  
-	</Provider>    
+			</Provider>
   );
 }
 
