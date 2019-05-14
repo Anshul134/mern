@@ -21,8 +21,10 @@ router.get('/fetch', (req,res,next)=> {
             mongoose.connection.close();
             res.status(200).json({projects:projects});
         }).catch((err)=>{
-            mongoose.connection.close();
-            res.status(400).json({error :err})
+            if(err) {
+                mongoose.connection.close();
+                res.status(400).json({error :err})
+            }
         })
         
     });

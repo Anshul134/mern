@@ -22,10 +22,12 @@ const rootReducer = (state=initState, action)=>{
 		
 	}
 	else if(action.type==="GET_PROJECTS") {
-		return {
+		const av = {
 			...state,
 			projects : action.payLoad
 		}
+		console.log("av>>>>",av)
+		return av;
 	}
 	return state;
 }

@@ -4,7 +4,7 @@ import ProjectSummary from './ProjectSummary';
 
 const generateProjSummary = (projects) => {
 	const projectSum =  projects && projects.map( (project) => {
-		return <ProjectSummary key={project.id} project={project}/>
+		return <ProjectSummary key={project._id} project={project}/>
 	});
 
 	return projectSum ? projectSum : "Loading project..."

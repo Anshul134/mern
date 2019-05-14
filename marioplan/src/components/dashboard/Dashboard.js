@@ -3,12 +3,20 @@ import React, {Component} from 'react';
 import Notifications from './Notifications';
 import ProjectList from '../projects/ProjectList';
 
+import {getItems} from '../../store/actions';
  
 import {connect} from 'react-redux';
 
 class Dashboard extends Component {
+	
+	componentDidMount() {
+		
+		this.props.getItems();
+	}
+
 	render() {
-		const {projects} = this.props;
+		const {projects} = this.props.projects;
+		console.log("projects props>>>", projects)
 		return(
 			<div className="dashboard container">
 				<div className="row">
@@ -33,5 +41,11 @@ const mapStateToProps = (state) => {
 	}
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getItems : () => dispatch(getItems() ) 
+	}
+}
 
-export default connect(mapStateToProps)(Dashboard);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

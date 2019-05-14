@@ -16,12 +16,12 @@ export const RemoveProject = (payLoad) => {
 	}
 }
 
-export const getItems = (payLoad) => {
-	return (dispatch, getState) => {
+export const getItems = () => {
+	return (dispatch) => {
 		axios('http://localhost:5000/project/fetch')
 			.then( (projects) =>{
-				console.log("response>>>",projects)
-				dispatch({type : "GET_PROJECTS" , payLoad:projects});
+				console.log("response>>>",projects.data)
+				dispatch({type : "GET_PROJECTS" , payLoad:projects.data});
 			}).catch( (err) => {
 				dispatch({type:"ERROR", payLoad: err})
 			})
