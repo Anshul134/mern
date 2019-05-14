@@ -21,3 +21,7 @@ form{
 form h5, form button {
 	margin: 20px 0;
 }
+
+.card .btn {
+  margin : 5px;
+}
