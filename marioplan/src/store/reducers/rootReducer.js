@@ -1,9 +1,5 @@
 const initState = {
-	projects: [
-			{id: 1, title : "Shenron", content : "blah blah blah"},
-			{id: 2, title : "Goku", content : "blah blah blah"},
-			{id: 3, title : "Vegeta", content : "blah blah blah"},
-		],
+	projects: [],
 	project: {}
 };
 
@@ -24,6 +20,12 @@ const rootReducer = (state=initState, action)=>{
 			projects : projects
 		};
 		
+	}
+	else if(action.type==="GET_PROJECTS") {
+		return {
+			...state,
+			projects : action.payLoad
+		}
 	}
 	return state;
 }

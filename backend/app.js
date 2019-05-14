@@ -1,18 +1,16 @@
 const express = require('express');
 const bodyparser = require('body-parser');
-const cors = require('cors');
 
 const app = express();
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
-app.use(cors());
-app.get("/", (req,res)=>console.log("here in /"));
 
-app.post("/project/create", (req, res)=> {
-	const {project} = req.body;
-	console.log(project);
-	res.send(project);
-})
+const projectRouters = require('./src/routes/projectRouters');
 
-app.listen(5000, ()=> console.log("listening to 5000"));
+app.use('/project/', projectRouters);
+app.get('/', (req,res) => res.send("in / route"));
+
+const PORT = process.env.port || 5000;
+
+app.listen(PORT, ()=> console.log("listening to 5000"));

@@ -215,7 +215,7 @@ def makedirec(path):
 
 
 base_url='https://lilly-medcomms.veevavault.com/api/v18.2/'
-query="query?q=SELECT format__v, country__v, type_of_document__c, type_of_data_asset_document__c, type__c, type_of_learning_and_development__c, type_of_operational_document__c, name__v, pangaea_id__c,title__v, status__v, type__v , subtype__v, document_creation_date__v, version_modified_date__v, requester_type__c, latest_version__v, (SELECT name__v FROM document_country__vr), language__v, classification__v, on_label_off_label__c, id, document_number__v, filename__v, (SELECT name__v, therapeutic_area__vs FROM document_product__vr), owner__v, major_version_number__v, minor_version_number__v FROM documents WHERE status__v = 'Published' AND (type__v CONTAINS ('RWE') OR (type__v CONTAINS ('Medical','Field Medical')))"
+query="query?q=SELECT format__v, country__v, type_of_document__c, type_                                of_data_asset_document__c, type__c, type_of_learning_and_development__c, type_of_operational_document__c, name__v, pangaea_id__c,title__v, status__v, type__v , subtype__v, document_creation_date__v, version_modified_date__v, requester_type__c, latest_version__v, (SELECT name__v FROM document_country__vr), language__v, classification__v, on_label_off_label__c, id, document_number__v, filename__v, (SELECT name__v, therapeutic_area__vs FROM document_product__vr), owner__v, major_version_number__v, minor_version_number__v FROM documents WHERE status__v = 'Published' AND (type__v CONTAINS ('RWE') OR (type__v CONTAINS ('Medical','Field Medical')))"
 FMT='%d%m%YT%H%M%S'
 log_location=r'\\ix1buitwxdev\V2S\VVMC\log'
 xml_path=r"\\ix1buitwxdev\V2S\VVMC\xml"

@@ -3,9 +3,6 @@ import {connect} from 'react-redux';
 
 import {addProject} from '../../store/actions';
 
-import {connect} from 'react-redux';
-import {addProject}  from '../../store/actions';
-
 class SignIn extends Component {
 	constructor(props) {
 		super(props);
@@ -29,12 +26,8 @@ class SignIn extends Component {
 	onSubmit(e) {
 		e.preventDefault();
 		console.log("state : ", this.state);
-<<<<<<< HEAD
-		this.props.addProject(this.state)
-=======
 		this.props.createProject(this.state);
 		this.props.history.push('/');
->>>>>>> 392b7c62e5cdea4f4339677657d3e02758726eb1
 	}
 
 	render() {
