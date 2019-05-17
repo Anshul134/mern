@@ -1,16 +1,13 @@
 const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     title : {
-        type: String,
-       
+        type: String
     },
     content : {
-        type: String,
-
+        type: String
     },
     userId : {
-        type: String,
-       
+        type: String
     }
 });
 

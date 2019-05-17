@@ -16,7 +16,6 @@ class Dashboard extends Component {
 
 	render() {
 		const {projects} = this.props.projects;
-		console.log("projects props>>>", projects)
 		return(
 			<div className="dashboard container">
 				<div className="row">
@@ -35,7 +34,7 @@ class Dashboard extends Component {
 
 
 const mapStateToProps = (state) => {
-	console.log(state);
+	
 	return {
 		projects : state.projects
 	}
