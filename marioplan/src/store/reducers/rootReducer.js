@@ -1,4 +1,4 @@
-const initState = {
+var initState = {
 	projects: [],
 	project: {}
 };
@@ -6,11 +6,14 @@ const initState = {
 const rootReducer = (state=initState, action)=>{
 	if(action.type==="ADD_PROJECT") {
 		console.log("init", state)
-		return {
+		
+		const newState =  {
 			
 			project : action.payLoad,
 			projects : [...state.projects, action.payLoad] 
 		};
+		initState = newState;
+		return state;
 	}
 	else if(action.type==="DELETE_PROJECT" )  {
 		
@@ -22,12 +25,12 @@ const rootReducer = (state=initState, action)=>{
 		
 	}
 	else if(action.type==="GET_PROJECTS") {
-		const av = {
+		return {
 			...state,
 			projects : action.payLoad
 		}
-		console.log("av>>>>",av)
-		return av;
+		
+		
 	}
 	return state;
 }

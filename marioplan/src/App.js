@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 import './App.css';
 
 import NavBar from './components/layout/NavBar';
@@ -16,7 +18,7 @@ import thunk from 'redux-thunk';
 
 import rootReducer from './store/reducers/rootReducer';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, composeWithDevTools( applyMiddleware(thunk) ) );
 
 function App() {
   return (

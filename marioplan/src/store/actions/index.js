@@ -20,12 +20,22 @@ export const getItems = () => {
 	return (dispatch) => {
 		axios('http://localhost:5000/project/fetch')
 			.then( (projects) =>{
-				console.log("response>>>",projects.data)
-				dispatch({type : "GET_PROJECTS" , payLoad:projects.data});
+				
+				dispatch({type : "GET_PROJECTS" , payLoad:projects.data.projects});
 			}).catch( (err) => {
 				dispatch({type:"ERROR", payLoad: err})
 			})
 		
 	}
 	
+}
+
+export const fetchProject = (projId) => {
+	return (dispatch) => {
+		axios("http://localhost:5000/project/", {id:projId})
+			.then( (resp) => {
+				console.log("SINGLE>>>", resp.data)
+				dispatch({type: "FETCH_PROJECT", payLoad : resp.data})
+			})
+	}
 }
