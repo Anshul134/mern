@@ -5,12 +5,11 @@ var initState = {
 
 const rootReducer = (state=initState, action)=>{
 	if(action.type==="ADD_PROJECT") {
-		console.log("init", state)
-		
-		const newState =  {
-			
+		console.log("state.projects", state.projects)
+		return {
+			...state,
 			project : action.payLoad,
-			projects : [...state.projects, action.payLoad] 
+			projects : state.projects.push(action.payLoad) 
 		};
 		initState = newState;
 		return state;
@@ -30,6 +29,14 @@ const rootReducer = (state=initState, action)=>{
 			projects : action.payLoad
 		}
 		
+		
+	}
+	else if(action.type==="GET_ONE_PROJECT") {
+		
+		return {
+			...state,
+			project : action.payLoad
+		}
 		
 	}
 	return state;

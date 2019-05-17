@@ -1,36 +1,47 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {fetchProject} from '../../store/actions';
+import {getProject} from '../../store/actions';
 
-
-
-class ProjectDetails extends Component  {
+class ProjectDetails extends Component {
+	
 	componentDidMount() {
-		console.log(this.props)
-		this.props.fetchProject(this.props.projId);
-		console.log(this.props.projId);
+		let projectId = this.props.projectId;
+		
+		this.props.getProject(projectId);
 	}
+
 	render() {
-		const {project} = this.props;
+		let project = this.props.project
+		
 		return(
 			<div className="container section project-details">
-				<h3>hello</h3>
-		</div>
+				<div className="card z-depth-0">
+					<div className="card-content">
+						<span className="card-title">{project.title}</span>
+						<p>{project.content} </p>
+					</div>
+					<div className="card-action grey lighten-4 grey-text">
+						<div>Posted by AA</div>
+						<div>10th MAy, 1:00 AM</div>
+						<div>Project Id {project.id}</div>
+					</div>
+				</div>
+			</div>
 		);
-	 }
+	}
 }
 
 const mapDispatchToProps = (dispatch) => {
+
 	return {
-		fetchProject : (id) => dispatch(fetchProject(id))
-	}
-}
-const mapStateToProps = (state, ownState) => {
-	return {
-		projId : ownState.match.params.id,
-		project : state.project
+		getProject : (projectId) => dispatch(getProject(projectId) )
 	}
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProjectDetails);
+const mapStateToProps = (state, ownState) => {
+	
+	return {projectId : ownState.match.params.id, project : state.project}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectDetails);

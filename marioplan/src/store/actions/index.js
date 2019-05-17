@@ -3,8 +3,8 @@ import axios from 'axios'
 
 export const addProject = (payLoad) => {
 	return (dispatch, getState) => {
-		//
-	
+		axios.post("http://localhost:5000/project/create", payLoad)
+			 .then(resp=>console.log("resp.data", resp.data));		
 		dispatch({type : "ADD_PROJECT", payLoad});
 	}
 }
@@ -18,24 +18,26 @@ export const RemoveProject = (payLoad) => {
 
 export const getItems = () => {
 	return (dispatch) => {
-		axios('http://localhost:5000/project/fetch')
+		axios.get('http://localhost:5000/project/')
 			.then( (projects) =>{
-				
-				dispatch({type : "GET_PROJECTS" , payLoad:projects.data.projects});
+				console.log("data",projects.data)
+				dispatch({type : "GET_PROJECTS" , payLoad:projects.data});
 			}).catch( (err) => {
 				dispatch({type:"ERROR", payLoad: err})
 			})
 		
 	}
-	
 }
 
-export const fetchProject = (projId) => {
+export const getProject = (payLoad) => {
+	console.log(payLoad)
 	return (dispatch) => {
-		axios("http://localhost:5000/project/", {id:projId})
-			.then( (resp) => {
-				console.log("SINGLE>>>", resp.data)
-				dispatch({type: "FETCH_PROJECT", payLoad : resp.data})
-			})
+		const url = "http://localhost:5000/project/get/" + payLoad;
+		
+		axios.get(url).then( (resp) => {
+		
+			dispatch( {type : "GET_ONE_PROJECT", payLoad : resp.data.project });
+		})
+		
 	}
 }
