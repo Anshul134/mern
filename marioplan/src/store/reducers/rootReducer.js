@@ -11,8 +11,8 @@ const rootReducer = (state=initState, action)=>{
 			project : action.payLoad,
 			projects : state.projects.push(action.payLoad) 
 		};
-		initState = newState;
-		return state;
+		//initState = newState;
+		//return state;
 	}
 	else if(action.type==="DELETE_PROJECT" )  {
 		
